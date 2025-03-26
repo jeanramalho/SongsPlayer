@@ -30,6 +30,17 @@ class SongsPlayerHomeViewController: UIViewController {
         
         let playButton = contentView.playButton
         playButton.addTarget(self, action: #selector(playSong), for: .touchUpInside)
+        
+        let pauseButton = contentView.pauseButton
+        pauseButton.addTarget(self, action: #selector(pauseSong), for: .touchUpInside)
+        
+        let stopButton = contentView.stopButton
+        stopButton.addTarget(self, action: #selector(stopSong), for: .touchUpInside)
+        
+        let playerSlider = contentView.playerSlider
+        playerSlider.addTarget(self, action: #selector(volumeMudado(_:)), for: .valueChanged)
+        
+        prepareSong()
     }
     
     private func setHierarhy(){
@@ -48,8 +59,7 @@ class SongsPlayerHomeViewController: UIViewController {
         ])
     }
     
-    @objc private func playSong(){
-        
+    private func prepareSong(){
         // variavel com caminho para direcionar o caminho do arquivo. Com o objeto Bundle posso acessar o caminho de arquivos dentro do app. Com o main eu acesso a estrutura principal do projeto
         if let path = Bundle.main.path(forResource: "bach", ofType: "mp3") {
             
@@ -63,8 +73,7 @@ class SongsPlayerHomeViewController: UIViewController {
                 //metodo que prepara o audio para ser executado
                 player.prepareToPlay()
                 
-                //metodo que da play no audio
-                player.play()
+               
             } catch  {
                 print("Erro ao reproduzir musica")
             }
@@ -72,8 +81,28 @@ class SongsPlayerHomeViewController: UIViewController {
         }
     }
     
+    @objc private func playSong(){
+        
+        //metodo que da play no audio
+        player.play()
+    }
+    
     @objc private func pauseSong(){
         
+        //metodo que pausa audio
+        player.pause()
+    }
+    
+    @objc private func stopSong(){
+        
+        //metodo que da stop no audio
+        player.stop()
+        // zera o audio
+        player.currentTime = 0
+    }
+    
+    @objc private func volumeMudado(_ sliderValor: UISlider){
+        print(Int(sliderValor.value))
     }
     
 }

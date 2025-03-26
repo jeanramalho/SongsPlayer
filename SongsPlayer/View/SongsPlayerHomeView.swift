@@ -28,6 +28,9 @@ class SongsPlayerHomeView: UIView {
     lazy var playerSlider: UISlider = {
         let slider =  UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.value = 50
         return slider
     }()
     
