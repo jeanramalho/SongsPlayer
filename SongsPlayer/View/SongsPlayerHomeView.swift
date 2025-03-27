@@ -29,8 +29,8 @@ class SongsPlayerHomeView: UIView {
         let slider =  UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 0
-        slider.maximumValue = 100
-        slider.value = 50
+        slider.maximumValue = 1
+        slider.value = 0.5
         return slider
     }()
     

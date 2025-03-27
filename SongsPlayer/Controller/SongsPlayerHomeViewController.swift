@@ -102,7 +102,9 @@ class SongsPlayerHomeViewController: UIViewController {
     }
     
     @objc private func volumeMudado(_ sliderValor: UISlider){
-        print(Int(sliderValor.value))
+       
+        // controla o volume do audio
+        player.volume = sliderValor.value
     }
     
 }
